@@ -1,58 +1,52 @@
 <template>
-  <v-app id="inspire">
-    <v-content>
-      <v-container fluid fill-height>
-        <v-layout align-center justify-center>
-          <v-flex md8 xs10>
-            <v-alert outline dismissible :type="alert" v-model="showAlert" class="my-3 headline">
-              {{message}}
-            </v-alert>
-            <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>Register</v-toolbar-title>
-                <v-spacer></v-spacer>
-              </v-toolbar>
-              <v-card-text>
-                <v-form
-                v-model="form_valid"
-                ref="form"
-                @submit.prevent="submit">
-                  <v-text-field
-                    name="email"
-                    label="Email"
-                    v-model="email"
-                    required
-                    :rules="[rules.required, rules.email]">
-                  </v-text-field>
-                  <v-text-field
-                    name="password"
-                    label="Password"
-                    id="password"
-                    type="password"
-                    required
-                    :rules="[rules.required, rules.password]"
-                    v-model="password">
-                  </v-text-field>
-                  <v-checkbox
-                  ref = "TAndCs"
-                  label="Do You Accept Terms?"
-                  v-model="checkbox"
-                  :rules="[rules.terms]"
-                  required
-                ></v-checkbox>
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="grey lighten-1" @click="clear">Clear</v-btn>
-                <v-btn color="primary" @click="register">Register</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
+  <v-layout align-center justify-center class="pt-5">
+    <v-flex md8 xs10>
+      <v-alert outline dismissible :type="alert" v-model="showAlert" class="my-3 headline">
+        {{message}}
+      </v-alert>
+      <v-card class="elevation-12">
+        <v-toolbar dark color="light-blue">
+          <v-toolbar-title>Register</v-toolbar-title>
+          <v-spacer></v-spacer>
+        </v-toolbar>
+        <v-card-text>
+          <v-form
+          v-model="form_valid"
+          ref="form"
+          @submit.prevent="submit">
+            <v-text-field
+              name="email"
+              label="Email"
+              v-model="email"
+              required
+              :rules="[rules.required, rules.email]">
+            </v-text-field>
+            <v-text-field
+              name="password"
+              label="Password"
+              id="password"
+              type="password"
+              required
+              :rules="[rules.required, rules.password]"
+              v-model="password">
+            </v-text-field>
+            <v-checkbox
+            ref = "TAndCs"
+            label="Do You Accept Terms?"
+            v-model="checkbox"
+            :rules="[rules.terms]"
+            required
+          ></v-checkbox>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn dark color="grey lighten-1" @click="clear">Clear</v-btn>
+          <v-btn dark color="light-blue" @click="register">Register</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationServices'
