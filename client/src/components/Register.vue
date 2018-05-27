@@ -13,6 +13,7 @@
           <v-form
           v-model="form_valid"
           ref="form"
+          autocomplete="off"
           @submit.prevent="submit">
             <v-text-field
               name="email"
