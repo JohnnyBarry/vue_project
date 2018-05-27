@@ -5,7 +5,7 @@
         {{message}}
       </v-alert>
       <v-card class="elevation-12">
-        <v-toolbar dark color="light-blue">
+        <v-toolbar dark height=50 color="light-blue">
           <v-toolbar-title>Register</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
