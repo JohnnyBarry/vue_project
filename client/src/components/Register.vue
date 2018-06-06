@@ -19,6 +19,7 @@
               name="email"
               label="Email"
               v-model="email"
+              autocomplete="off"
               required
               :rules="[rules.required, rules.email]">
             </v-text-field>
@@ -27,6 +28,7 @@
               label="Password"
               id="password"
               type="password"
+              autocomplete="new-password"
               required
               :rules="[rules.required, rules.password]"
               v-model="password">
@@ -91,6 +93,8 @@ export default {
             email: this.email,
             password: this.password
           })
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
           this.message = 'Welcome ' + response.data.email + ' Thank You For Registering.'
           this.showAlert = true
           this.alert = SUCCESS_ALERT

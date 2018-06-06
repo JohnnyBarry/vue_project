@@ -7,21 +7,45 @@
       </v-toolbar-title>
     </router-link>
     <!-- TODO implement this later -->
-    <!-- <v-toolbar-items class="pr-3">
-      <v-btn flat dark>
-        Browse
-      </v-btn>
-    </v-toolbar-items> -->
+    <v-toolbar-items class="pr-3">
+      <router-link
+      to="songs"
+      class="btn btn--flat light-blue">
+        <v-btn
+        flat dark>
+          Browse
+        </v-btn>
+      </router-link>
+    </v-toolbar-items>
+
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <router-link to="login" class="btn btn--flat light-blue">
-        <v-btn flat dark>
+      <router-link
+      to="login"
+      v-if="!$store.state.isUserLoggedIn"
+      class="btn btn--flat light-blue">
+        <v-btn
+        flat dark>
           Login
         </v-btn>
       </router-link>
-      <router-link to="register" class="btn btn--flat light-blue">
-        <v-btn flat dark>
+      <router-link
+      to="register"
+      v-if="!$store.state.isUserLoggedIn"
+      class="btn btn--flat light-blue">
+        <v-btn
+        flat dark>
           Sign Up
+        </v-btn>
+      </router-link>
+      <router-link
+      v-on:click.native="logout"
+      to="root"
+      v-if="$store.state.isUserLoggedIn"
+      class="btn btn--flat light-blue">
+        <v-btn
+        flat dark>
+          Logout
         </v-btn>
       </router-link>
       <v-btn icon>
@@ -32,7 +56,12 @@
 </template>
 <script>
 export default {
-
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+    }
+  }
 }
 </script>
 
