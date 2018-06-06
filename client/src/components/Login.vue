@@ -4,46 +4,41 @@
       <v-alert outline dismissible :type="alert" v-model="showAlert" class="my-3 headline">
         {{message}}
       </v-alert>
-      <v-card class="elevation-12">
-        <v-toolbar dark height=50 color="light-blue">
-          <v-toolbar-title>Login</v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-toolbar>
-        <v-card-text>
-          <v-form
-          v-model="form_valid"
-          ref="form"
-          @submit.prevent="submit">
-            <v-text-field
-              name="email"
-              label="Email"
-              v-model="email"
-              required
-              :rules="[rules.required, rules.email]">
-            </v-text-field>
-            <v-text-field
-              name="password"
-              label="Password"
-              id="password"
-              type="password"
-              required
-              :rules="[rules.required, rules.password]"
-              v-model="password">
-            </v-text-field>
-          </v-form>
-        </v-card-text>
+      <panel title="Login">
+        <v-form
+        v-model="form_valid"
+        ref="form"
+        @submit.prevent="submit">
+          <v-text-field
+            name="email"
+            label="Email"
+            v-model="email"
+            required
+            :rules="[rules.required, rules.email]">
+          </v-text-field>
+          <v-text-field
+            name="password"
+            label="Password"
+            id="password"
+            type="password"
+            required
+            :rules="[rules.required, rules.password]"
+            v-model="password">
+          </v-text-field>
+        </v-form>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn dark color="light-blue" @click="login">Login</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
-      </v-card>
+      </panel>
     </v-flex>
   </v-layout>
 </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationServices'
 import {ERROR_ALERT, SUCCESS_ALERT} from '@/assets/constants'
+import Panel from '@/components/Panel'
 export default {
   data () {
     return {
@@ -97,6 +92,10 @@ export default {
       this.password = ''
       this.showAlert = false
     }
+  },
+
+  components: {
+    Panel
   }
 }
 </script>

@@ -4,56 +4,51 @@
       <v-alert outline dismissible :type="alert" v-model="showAlert" class="my-3 headline">
         {{message}}
       </v-alert>
-      <v-card class="elevation-12">
-        <v-toolbar dark height=50 color="light-blue">
-          <v-toolbar-title>Register</v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-toolbar>
-        <v-card-text>
-          <v-form
-          v-model="form_valid"
-          ref="form"
-          autocomplete="off"
-          @submit.prevent="submit">
-            <v-text-field
-              name="email"
-              label="Email"
-              v-model="email"
-              autocomplete="off"
-              required
-              :rules="[rules.required, rules.email]">
-            </v-text-field>
-            <v-text-field
-              name="password"
-              label="Password"
-              id="password"
-              type="password"
-              autocomplete="new-password"
-              required
-              :rules="[rules.required, rules.password]"
-              v-model="password">
-            </v-text-field>
-            <v-checkbox
-            ref = "TAndCs"
-            label="Do You Accept Terms?"
-            v-model="checkbox"
-            :rules="[rules.terms]"
+      <panel title="Register">
+        <v-form
+        v-model="form_valid"
+        ref="form"
+        autocomplete="off"
+        @submit.prevent="submit">
+          <v-text-field
+            name="email"
+            label="Email"
+            v-model="email"
+            autocomplete="off"
             required
-          ></v-checkbox>
-          </v-form>
-        </v-card-text>
+            :rules="[rules.required, rules.email]">
+          </v-text-field>
+          <v-text-field
+            name="password"
+            label="Password"
+            id="password"
+            type="password"
+            autocomplete="new-password"
+            required
+            :rules="[rules.required, rules.password]"
+            v-model="password">
+          </v-text-field>
+          <v-checkbox
+          ref = "TAndCs"
+          label="Do You Accept Terms?"
+          v-model="checkbox"
+          :rules="[rules.terms]"
+          required
+        ></v-checkbox>
+        </v-form>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn dark color="grey lighten-1" @click="clear">Clear</v-btn>
           <v-btn dark color="light-blue" @click="register">Register</v-btn>
         </v-card-actions>
-      </v-card>
+      </panel>
     </v-flex>
   </v-layout>
 </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationServices'
 import {ERROR_ALERT, SUCCESS_ALERT} from '@/assets/constants'
+import Panel from '@/components/Panel'
 export default {
   data () {
     return {
@@ -115,6 +110,10 @@ export default {
       this.checkbox = false
       this.showAlert = false
     }
+  },
+
+  components: {
+    Panel
   }
 }
 </script>
